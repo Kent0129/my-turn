@@ -1,6 +1,9 @@
 class TurnsController < ApplicationController
   before_action :now_status, only: [:index, :show]
   before_action :set_turn, only: [:update, :show]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :admin_check, only: [:update]
+
 
   def index
     @wait = Turn.where(status: 0)
@@ -44,4 +47,11 @@ class TurnsController < ApplicationController
     @wait_people = Turn.where(status: 0).count
     @absence_people = Turn.where(status: 2).count
   end
+
+  def admin_check
+    unless current_user.admin?
+      redirect_to root_path
+    end
+  end
+  
 end
