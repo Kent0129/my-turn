@@ -1,10 +1,11 @@
 class TurnsController < ApplicationController
-  before_action :now_status, only: [:index, :show]
-  before_action :set_turn, only: [:update, :show]
-
+  before_action :set_turn, only: [:update]
   def index
+    @now = Turn.where(status: 1).first
     @wait = Turn.where(status: 0)
     @absence = Turn.where(status: 2)
+    @wait_people = Turn.where(status: 0).count
+    @absence_people = Turn.where(status: 2).count
   end
 
 
@@ -27,9 +28,6 @@ class TurnsController < ApplicationController
     @turn.update(turn_params)
   end
 
-  def show
-  end
-
   private
   def turn_params
     params.permit(:name, :number, :status)
@@ -39,9 +37,4 @@ class TurnsController < ApplicationController
     @turn = Turn.find(params[:id])
   end
 
-  def now_status
-    @now = Turn.where(status: 1).first
-    @wait_people = Turn.where(status: 0).count
-    @absence_people = Turn.where(status: 2).count
-  end
 end
