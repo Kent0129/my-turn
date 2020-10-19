@@ -40,15 +40,13 @@
     <table>
       <thead>
         <tr>
-         <th></th>
           <th>不在番号</th>
           <th>名前</th>
         </tr>
       </thead>
       <% @absence.each do |absence|%>
         <tbody>
-         <td><%= link_to 'link', turn_path(absence.id) %></td>
-          <td><%= absence.number%>番</td>
+         <td><%= link_to "#{absence.number}番", turn_path(absence.id) %></td>
           <td><%= absence.name%>様</td>
           <td><% if user_signed_in? && current_user.admin? %>
           <%= button_to '開始', turn_path(absence.id), method: :put, class: "button", params: {status: '1'}, remote: true %>
@@ -65,15 +63,13 @@
     <table>
       <thead>
         <tr>
-          <th></th>
           <th>待ち番号</th>
           <th>名前</th>
         </tr>
       </thead>
       <% @wait.each do |wait|%>
         <tbody>
-          <td><%= link_to 'link', turn_path(wait.id) %></td>
-          <td><%= wait.number%>番</td>
+          <td><%= link_to "#{wait.number}番", turn_path(wait.id) %></td>
           <td><%= wait.name%>様</td>
           <td><% if user_signed_in? && current_user.admin? %>
           <%= button_to '開始', turn_path(wait.id), method: :put, class: "button", params: {status: '1'}, remote: true %>
