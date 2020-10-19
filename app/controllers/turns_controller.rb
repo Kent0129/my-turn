@@ -1,5 +1,5 @@
 class TurnsController < ApplicationController
-
+  before_action :set_turn, only: [:update]
   def index
     @now = Turn.where(status: 1).first
     @wait = Turn.where(status: 0)
@@ -24,9 +24,17 @@ class TurnsController < ApplicationController
     end
   end
 
+  def update
+    @turn.update(turn_params)
+  end
+
   private
   def turn_params
     params.permit(:name, :number, :status)
+  end
+
+  def set_turn
+    @turn = Turn.find(params[:id])
   end
 
 end
