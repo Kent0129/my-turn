@@ -1,0 +1,18 @@
+<div class="contents-row">
+  <div class="container">
+    <%= form_with model: @turns, url: turns_path, local: true do |f| %>
+      <h1>番号を発行する</h1>
+      <div class="create-num">
+      <%= f.text_field :name, class: 'name', placeholder:'名前を入力してください'%>
+      </div>
+      <% if @today_num_end.present? %>
+       <%= f.hidden_field :number,class: 'number' , value: "#{@next_num}", :readonly => true %>
+      <% else %>
+      <%= form.hidden_field :number,class: 'number' , value: "1", :readonly => true %>
+      <% end %>
+      <div class='new-btn'>
+      <%= f.submit "発行" ,class:"red-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
