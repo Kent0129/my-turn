@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_055102) do
   create_table "turns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "number", null: false
-    t.string "status", default: "順番待ち中", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
