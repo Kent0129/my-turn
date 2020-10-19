@@ -5,7 +5,6 @@ class CreateTurns < ActiveRecord::Migration[6.0]
       t.integer :number,  null: false
       t.integer :status,  default: "順番待ち中"
       t.timestamps
-      t.timestamps
     end
   end
 end
