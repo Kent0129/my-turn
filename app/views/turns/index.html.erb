@@ -1,0 +1,54 @@
+<div class='main'> 
+ <% if @now.present? %>
+    <h1>診察中の番号</h1>
+    <div class='now'>
+      <div class='now-number'>
+        <%= @now.number%>
+      </div>
+      <div class='now-number2'>
+        <span>番</span>
+      </div>
+  <% else %>
+   <div class='now'>番号が表示されるまでお待ちください</div>
+  <%end%>
+</div>
+ 
+
+  <div class='count'>
+    <p>お待ち人数<%= @wait_people %>人</p>
+    <p>不在人数<%= @absence_people%>人</p>
+  </div>
+  
+  <div class = 'absence'>
+    <table>
+      <thead>
+        <tr>
+          <th>不在番号</th>
+          <th>名前</th>
+        </tr>
+      </thead>
+      <% @absence.each do |absence|%>
+        <tbody>
+          <td><%= absence.number%>番</td>
+          <td><%= absence.name%>様</td>
+        </tbody>
+      <%end%>
+    <table>
+  </div>
+
+  <div class = 'wait'>
+    <table>
+      <thead>
+        <tr>
+          <th>待ち番号</th>
+          <th>名前</th>
+        </tr>
+      </thead>
+      <% @wait.each do |wait|%>
+        <tbody>
+          <td><%= wait.number%>番</td>
+          <td><%= wait.name%>様</td>
+        </tbody>
+      <%end%>
+    </table>
+  </div>
