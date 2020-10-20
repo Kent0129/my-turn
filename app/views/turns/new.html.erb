@@ -6,9 +6,9 @@
       <%= f.text_field :name, class: 'name', placeholder:'名前を入力してください'%>
       </div>
       <% if @today_num_end.present? %>
-       <%= f.hidden_field :number,class: 'number' , value: "#{@next_num}", :readonly => true %>
+       <%= f.hidden_field :number,class: 'number' , value: "#{@today_num_end += 1}", :readonly => true %>
       <% else %>
-      <%= form.hidden_field :number,class: 'number' , value: "1", :readonly => true %>
+      <%= f.hidden_field :number,class: 'number' , value: "1", :readonly => true %>
       <% end %>
       <div class='new-btn'>
       <%= f.submit "発行" ,class:"red-btn" %>
