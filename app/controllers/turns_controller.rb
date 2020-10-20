@@ -14,7 +14,7 @@ class TurnsController < ApplicationController
   def new
     @examinations = Turn.new
     @today_num_end = Turn.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).maximum(:number)
-    @next_num =  @today_num_end + 1
+
   end
 
   def create
@@ -35,7 +35,7 @@ class TurnsController < ApplicationController
 
   private
   def turn_params
-    params.permit(:name, :number, :status)
+    params.permit(:name, :number, :status ).merge(user_id: current_user.id)
   end
 
   def set_turn
@@ -53,5 +53,4 @@ class TurnsController < ApplicationController
       redirect_to root_path
     end
   end
-  
 end
