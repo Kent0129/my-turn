@@ -3,7 +3,7 @@ class CreateTurns < ActiveRecord::Migration[6.0]
     create_table :turns do |t|
       t.string :name,     null: false
       t.integer :number,  null: false
-      t.integer :status,  null: false,  default: 0
+      t.integer :status,  null: false,  default: 0 
       t.timestamps
     end
   end

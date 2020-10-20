@@ -1,0 +1,31 @@
+<div class="box">
+  <div class="box-inner">
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <h1>新規登録</h1>
+      <div class="box-email">
+        <%= f.label :email, "Eメール" %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+      <div class="box-password">
+        <%= f.label :password, "パスワード" %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div class="box-password2">
+        <%= f.label :password, "パスワード(確認)" %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div class="box-name">
+        <%= f.label :user_name, "お名前" %><br />
+        <%= f.text_field :user_name %>
+      </div>
+      <div class="box-login">
+        <%= f.submit "新規登録" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="box-newusr">
+    <p><span>------------</span> 登録がお済みの方はこちら <span>------------</span></p>
+    <%= link_to "ログイン画面へ", new_user_session_path %>
+  </div>
+  <%= link_to 'トップページへ戻る', root_path %>
+</div>
