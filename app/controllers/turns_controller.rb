@@ -20,7 +20,7 @@ class TurnsController < ApplicationController
   def create
     @turn = Turn.new(turn_params)
     if @turn.save
-      redirect_to root_path
+      render :create
     else
       render :new
     end

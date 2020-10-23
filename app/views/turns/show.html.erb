@@ -1,27 +1,35 @@
-<h1><%= @turn.name %>様の番号は<%= @turn.number %>番です</h1>
-  
-<div class='main'> 
- <% if @now.present? %>
-    <h2>診察中の番号</h2>
-    <div class='now'>
-      <div class='now-number'>
-        <%= @now.number%>
+<div class='main'>
+    
+  <div class='test'> 
+  <div class='user-num'>
+    <h1><%= @turn.name %>様の番号は<%= @turn.number %>番です</h1>
+    </div>
+    <div class='left-row'> 
+    <% if @now.present? %>
+        <h2>診察中の番号</h2>
+        <div class='now'>
+          <div class='now-number1'>
+            <%= @now.number%>
+          </div>
+          <div class='now-number2'>
+            <span>番</span>
+          </div>
+          
+      <% else %>
+      <div class='now'>番号が表示されるまでお待ちください</div>
+      <%end%>
       </div>
-      <div class='now-number2'>
-        <span>番</span>
-      </div>
-  <% else %>
-   <div class='now'>番号が表示されるまでお待ちください</div>
-  <%end%>
-</div>
+    </div>
 
 
    
     <%if @wait_people >= 0 %>
-    <p><%= @turn.name %>様の順番まで、<%= @wait_people %>人待ちです。</p>
+    <div class='kari'><%= @turn.name %>様の順番まで、<%= @wait_people %>人待ちです。</div>
     <p>順番が前後することがあります</p>
     <% else %>
    <div class='now'>番号が表示されるまでお待ちください</div>
     <%end%>
     <p>不在人数<%= @absence_people%>人</p>
     <%= link_to 'トップページへ戻る', root_path %>
+
+</div>
