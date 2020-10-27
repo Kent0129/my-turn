@@ -1,7 +1,6 @@
 <div class='main'>
-    
-  <div class='test'> 
-  <div class='user-num'>
+  <div class='left'> 
+    <div class='user-num'>
     <h1><%= @turn.name %>様の番号は<%= @turn.number %>番です</h1>
     </div>
     <div class='left-row'> 
@@ -22,14 +21,25 @@
     </div>
 
 
-   
+    
+  </div>
+  <div class='right'>
+  <div class='right-row'>
+  
+    <div class='qr'><%= @qr %></div>
+    
+    <div class='kari2'>
+    <%= '読み込むとこのページを開けます'%>
     <%if @wait_people >= 0 %>
     <div class='kari'><%= @turn.name %>様の順番まで、<%= @wait_people %>人待ちです。</div>
-    <p>順番が前後することがあります</p>
-    <% else %>
-   <div class='now'>番号が表示されるまでお待ちください</div>
-    <%end%>
-    <p>不在人数<%= @absence_people%>人</p>
-    <%= link_to 'トップページへ戻る', root_path %>
-
+      
+        <p>順番が前後することがあります</p>
+        <% else %>
+      <div class='now'>番号が表示されるまでお待ちください</div>
+        <%end%>
+        <p>不在人数<%= @absence_people%>人</p>
+        <%= link_to 'トップページへ戻る', root_path %>
+      </div>
+      </div>
+  </div>
 </div>
