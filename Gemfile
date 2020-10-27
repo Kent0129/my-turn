@@ -57,6 +57,8 @@ gem 'pry-rails'
 
 gem 'devise'
 
+gem 'rqrcode'
+
 group :production do
   gem 'rails_12factor'
 end 
