@@ -3,7 +3,7 @@ class TurnsController < ApplicationController
   before_action :set_turn, only: [:update, :show]
   before_action :authenticate_user!, only: [:new, :create]
   before_action :admin_check, only: [:update]
-
+  before_action :qrcode, only:[:show]
 
   def index
     @wait = Turn.where(status: 0)
@@ -20,6 +20,9 @@ class TurnsController < ApplicationController
   def create
     @turn = Turn.new(turn_params)
     if @turn.save
+      require 'rqrcode'
+      text = turn_path(@turn.id)
+      @qr = RQRCode::QRCode.new(text).as_svg.html_safe
       render :create
     else
       render :new
@@ -53,4 +56,11 @@ class TurnsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def qrcode
+    require 'rqrcode'
+    text = turn_path(@turn.id)
+    @qr = RQRCode::QRCode.new(text).as_svg.html_safe
+  end
+
 end
