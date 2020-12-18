@@ -14,7 +14,6 @@ class TurnsController < ApplicationController
   def new
     @examinations = Turn.new
     @today_num_end = Turn.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).maximum(:number)
-
   end
 
   def create
