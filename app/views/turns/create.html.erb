@@ -1,19 +1,25 @@
-<div class='issue'>
-  <div class='number'>
-    <h1>番号が発行されました</h1>
-    <div class="create-name">
+<div class='issue-create'>
+  <div class='issue-text'>
+    番号が発行されました
+  </div>
+    <div class="issue-num">
       <%="#{@turn.name}様の番号は#{@turn.number}番です"%>
     </div>
-   
+  <div class="qr-position">
+    <div class='qr'>
+        <%= @qr %>
+    </div>
+  </div>
+    <div class='bottom'>
+      <%= '読み込むと待ち状況がわかるページが開けます'%>
+      <p><%= link_to "トップページへ戻る", root_path, class: "toppage" %></p>
+    </div>
     <div class='reload-notification'>
     <%= 'このページは30秒で自動に切り替わります'%>
     </div>
   </div>
-</div>
-   <div class='qr'>
-      <%= @qr %>
-    </div>
- 
+
+
 <script>
   const timer = 30000
   window.addEventListener('load',function(){

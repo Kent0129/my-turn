@@ -33,6 +33,10 @@ class TurnsController < ApplicationController
   end
 
   def show
+    @myturn = Turn.where(status: 1).ids.index(@turn.id)
+    @end = Turn.where(status: 3).ids.include?(@turn.id)
+    @count = Turn.where(status: 0).ids.index(@turn.id)
+    @absence = Turn.where(status: 2).ids.include?(@turn.id)
   end
 
   private
