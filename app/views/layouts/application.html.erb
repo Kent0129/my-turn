@@ -12,4 +12,10 @@
   <body>
     <%= yield %>
   </body>
+  <script>
+  const timer = 60000
+  window.addEventListener('load',function(){
+  setInterval('location.reload()',timer);
+  });
+</script>
 </html>
