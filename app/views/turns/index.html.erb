@@ -22,11 +22,13 @@
               <div class='now-wait2'>お待ちください</div>
             </div>
             <%end%>
-          <% if (user_signed_in? && current_user.admin?) && @now.present? %>
+          <div class='button'>
+            <% if (user_signed_in? && current_user.admin?) && @now.present? %>
               <%= button_to '終了', turn_path(@now.id), method: :put, class: "button", params: {status: '3'}, remote: true %>
               <%= button_to '待ち', turn_path(@now.id), method: :put, class: "button", params: {status: '0'}, remote: true %>
               <%= button_to '不在', turn_path(@now.id), method: :put, class: "button", params: {status: '2'}, remote: true %>
             <%end%>
+          </div>
         </div>
         <div class='now-name'>
          <% if @now.present? %>
