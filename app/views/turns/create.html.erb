@@ -1,9 +1,6 @@
-<div class='main'>
-  <div class='new-number'>
-<div class='new-number-row'>
-    <div class="number-create">
-      <%= "番号が発行されました"%>
-    </div>
+<div class='issue'>
+  <div class='number'>
+    <h1>番号が発行されました</h1>
     <div class="create-name">
       <%="#{@turn.name}様の番号は#{@turn.number}番です"%>
     </div>
@@ -18,7 +15,7 @@
     </div>
     </div>
 <script>
-  const timer = 30000    // ミリ秒で間隔の時間を指定
+  const timer = 30000
   window.addEventListener('load',function(){
   setInterval('location.reload()',timer);
   });
