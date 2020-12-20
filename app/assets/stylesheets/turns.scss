@@ -101,13 +101,8 @@ html{
 .now-name-row{
   font-size: 50px;
   margin: 0 0 0 auto;
-  
- .right{
-  width: 25%;
-
-  display: flex;
-  align-items: baseline;
  }
+
  
  .count{
   height: 60px;
@@ -299,3 +294,9 @@ h1{
   font-size: 20px; 
 }
 
+.qr{
+  height: 275px;
+  width: 275px;
+  padding: 1px;
+  background-color: lightslategrey;
+}
