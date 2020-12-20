@@ -1,24 +1,38 @@
-# README
+# My Turn
+このWebアプリは、病院の順番待ちを可視化ことができます。
+コロナの影響で、病院の待合室に呼ばれるまで待たずに、外でスマートフォンを使い、順番を確認できないかと思い作りました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 機能一
+・ユーザー登録、ログイン機能(devise)
 
-Things you may want to cover:
+　・管理者権限
 
-* Ruby version
+・番行機能
 
-* System dependencies
+・状態更新機能 (Ajax)
 
-* Configuration
+#　追加予定 
 
-* Database creation
+・RSpecを用意たテスト
 
-* Database initialization
+・病院外から予約する機能
 
-* How to run the test suite
+・QRコード作成機能
 
-* Services (job queues, cache servers, search engines, etc.)
+・インフラ周りに使っていきたいもの
 
-* Deployment instructions
+　・AWS
 
-* ...
+　・Docker
+
+　・CircleCI
+
+# 使用技術
+
+Ruby 2.6.5
+
+Ruby on Rails 6.0.3.4
+
+MySQL 5.6.47
+
+JQuery

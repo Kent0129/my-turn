@@ -4,15 +4,19 @@
     <div class="create-name">
       <%="#{@turn.name}様の番号は#{@turn.number}番です"%>
     </div>
+   
     <div class='reload-notification'>
     <%= 'このページは30秒で自動に切り替わります'%>
     </div>
   </div>
 </div>
-
+ <div class='qr'>
+      <%= @qr %>
+    </div>
+    </div>
 <script>
   const timer = 30000
   window.addEventListener('load',function(){
-    setInterval('location.reload()',timer);
+  setInterval('location.reload()',timer);
   });
 </script>
