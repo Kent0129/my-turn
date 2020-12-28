@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   resources :turns
 
-  namespace :admin do
-    resources :users
-  end
-  
+
+
 end
