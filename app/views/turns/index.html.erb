@@ -11,27 +11,20 @@
     
       <div class='left-row'>診察中の番号</div>
         <div class='now'>
-          <% if @now.present? %>
+          <%if @now.present?%>
             <div class='now-number1'>
               <%= @now.number%>
             </div>
             <div class='now-number2'>番</div>
-          <% else %>
+          <%else%>
             <div class='now-wait'>
               <div class='now-wait1'>番号が表示されるまで</div>
               <div class='now-wait2'>お待ちください</div>
             </div>
             <%end%>
-          <div class='button'>
-            <% if (user_signed_in? && current_user.admin?) && @now.present? %>
-              <%= button_to '終了', turn_path(@now.id), method: :put, class: "button", params: {status: '3'}, remote: true %>
-              <%= button_to '待ち', turn_path(@now.id), method: :put, class: "button", params: {status: '0'}, remote: true %>
-              <%= button_to '不在', turn_path(@now.id), method: :put, class: "button", params: {status: '2'}, remote: true %>
-            <%end%>
-          </div>
         </div>
         <div class='now-name'>
-         <% if @now.present? %>
+         <%if @now.present?%>
             <div class='now-name-row'>
               <%= @now.name%>  様
             </div>
@@ -56,7 +49,9 @@
     
     <div class="right">
       <div class='link-area'>
-        <%if user_signed_in?%>
+        <%if user_signed_in?  && current_user.admin?%>
+          <%= link_to '管理者ページ', admin_turns_path, class: 'admin-link' %>
+        <%elsif user_signed_in?%>
           <%= link_to '番号を発行する', new_turn_path, class: 'issue-link' %>
         <% else %>
           <%= link_to 'ログイン', new_user_session_path, class: "login-link" %>
@@ -71,19 +66,6 @@
                 <div class='td1'><%= link_to "#{wait.number}番", turn_path(wait.id) %></div>
                 <div class='td2'><%= wait.name%>様</div>
               </div>
-              <div class="btn">
-                <% if user_signed_in? && current_user.admin? %>
-                  <div class='td'>
-                    <%= button_to '診察', turn_path(wait.id), method: :put, class: "button", params: {status: '1'}, remote: true %>
-                  </div>
-                  <div class='td'>
-                    <%= button_to '不在', turn_path(wait.id), method: :put, class: "button", params: {status: '2'}, remote: true %>
-                  </div>
-                  <div class='td'>
-                    <%= button_to '終了', turn_path(wait.id), method: :put, class: "button", params: {status: '3'}, remote: true %>
-                  </div>
-                <%end%>
-              </div>
             <%end%>
         </div>
 
@@ -95,19 +77,6 @@
               <div class="tr">
                 <div class='td1'><%= link_to "#{absence.number}番", turn_path(absence.id) %></div>
                 <div class='td2'><%= absence.name%>様</div>
-              </div>
-              <div class="btn">
-                <% if user_signed_in? && current_user.admin? %>
-                  <div class='td'>
-                    <%= button_to '診察', turn_path(absence.id), method: :put, class: "button", params: {status: '1'}, remote: true %>
-                  </div>
-                  <div class='td'>
-                    <%= button_to '待ち', turn_path(absence.id), method: :put, class: "button", params: {status: '0'}, remote: true %>
-                  </div>
-                  <div class='td'>
-                    <%= button_to '終了', turn_path(absence.id), method: :put, class: "button", params: {status: '3'}, remote: true %>
-                  </div>
-                <%end%>
               </div>
             <%end%>
             </div>

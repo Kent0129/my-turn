@@ -1,0 +1,40 @@
+<div class="link-issue">
+  <div class='link-area'>
+    <%= link_to '番号を発行する', new_turn_path, class: 'issue-link' %>
+  </div>
+</div>
+<table>
+    <th>番号</th>
+    <th>名前</th>
+    <th>状態</th>
+    <th>変更</th>
+
+ <%@turns.each do|turn|%>
+    <tr>
+      <td>
+        <%=turn.number%>
+      </td>
+      <td>
+        <%=turn.name%>
+      </td>
+      <td>
+          <%=turn.status%>
+      </td>
+      <td>
+        <div class="btn">
+          <%= button_to '待ち', turn_path(turn.id), method: :put, class: "wait-btn", params: {status: '待ち'}, remote: true %>
+          <%= button_to '診察', turn_path(turn.id), method: :put, class: "now-btn", params: {status: '診察'}, remote: true %>
+          <%= button_to '不在', turn_path(turn.id), method: :put, class: "absence-btn", params: {status: '不在'}, remote: true %>
+          <%= button_to '終了', turn_path(turn.id), method: :put, class: "end-btn", params: {status: '終了'}, remote: true %>
+        </div>
+      </td>
+    </tr>
+  <%end%>
+</table>
+
+<%= link_to 'トップページへ戻る', root_path, {class:'root_path'} %>
+<script type="text/javascript">
+  $('td:contains("待ち")').css("color", "green");
+  $('td:contains("診察")').css("color", "red");
+  $('td:contains("不在")').css("color", "blue");
+</script>

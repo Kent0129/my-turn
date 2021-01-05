@@ -23,7 +23,7 @@
         <div class='show-number2'>番号が表示されるまでお待ちください</div>
       <%end%>
     
-        <%if @myturn == 0%>
+        <%if @myturn == "診察"%>
           <div class='show-now'>あなたの順番です</div>
         <%elsif @absence.present?%>
          <div class='show-now'>不在でしたので、窓口で確認をしてください</div>
