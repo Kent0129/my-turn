@@ -2,7 +2,7 @@ class Admin::TurnsController < ApplicationController
   before_action :admin_user
 
   def index
-    @turns = User.all.order("created_at DESC")
+    @turns = Turn.all
   end
 
   private
