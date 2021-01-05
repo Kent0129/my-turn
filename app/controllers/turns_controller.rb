@@ -6,8 +6,8 @@ class TurnsController < ApplicationController
   before_action :qrcode, only:[:show]
 
   def index
-    @wait = Turn.where(status: 0)
-    @absence = Turn.where(status: 2)
+    @wait = Turn.where(status: "待ち")
+    @absence = Turn.where(status: "不在")
   end
 
 
@@ -33,10 +33,10 @@ class TurnsController < ApplicationController
   end
 
   def show
-    @myturn = Turn.where(status: 1).ids.index(@turn.id)
-    @end = Turn.where(status: 3).ids.include?(@turn.id)
-    @count = Turn.where(status: 0).ids.index(@turn.id)
-    @absence = Turn.where(status: 2).ids.include?(@turn.id)
+    @myturn = Turn.where(status: "診察").ids.index(@turn.id)
+    @end = Turn.where(status: "終了").ids.include?(@turn.id)
+    @count = Turn.where(status: "待ち").ids.index(@turn.id)
+    @absence = Turn.where(status: "不在").ids.include?(@turn.id)
   end
 
   private
@@ -49,9 +49,9 @@ class TurnsController < ApplicationController
   end
 
   def now_status
-    @now = Turn.where(status: 1).first
-    @wait_people = Turn.where(status: 0).count
-    @absence_people = Turn.where(status: 2).count
+    @now = Turn.where(status: "診察").first
+    @wait_people = Turn.where(status: "待ち").count
+    @absence_people = Turn.where(status: "不在").count
   end
 
   def admin_check
