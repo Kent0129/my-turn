@@ -2,7 +2,7 @@ class Admin::TurnsController < ApplicationController
   before_action :admin_user
 
   def index
-    @turns = Turn.all
+    @turns = Turn.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
   private
