@@ -6,13 +6,13 @@
   <tr>
     <%@turns.each do|turn|%>
       <td>
-      <%=turn.number%>
+        <%=turn.number%>
       </td>
       <td>
-      <%= turn.name%>
+        <%=turn.name%>
       </td>
       <td>
-        <%=turn.status%>
+          <%=turn.status%>
       </td>
       <td>
         <div class="btn">
@@ -25,3 +25,9 @@
     </tr>
   <%end%>
 </table>
+
+<script type="text/javascript">
+  $('td:contains("待ち")').css("color", "green");
+  $('td:contains("診察")').css("color", "red");
+  $('td:contains("不在")').css("color", "blue");
+</script>
