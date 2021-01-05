@@ -1,10 +1,16 @@
+<div class="link-issue">
+  <div class='link-area'>
+    <%= link_to '番号を発行する', new_turn_path, class: 'issue-link' %>
+  </div>
+</div>
 <table>
-  <th>番号</th>
-  <th>名前</th>
-  <th>状態</th>
-  <th>変更</th>
-  <tr>
-    <%@turns.each do|turn|%>
+    <th>番号</th>
+    <th>名前</th>
+    <th>状態</th>
+    <th>変更</th>
+
+ <%@turns.each do|turn|%>
+    <tr>
       <td>
         <%=turn.number%>
       </td>
@@ -26,6 +32,7 @@
   <%end%>
 </table>
 
+<%= link_to 'トップページへ戻る', root_path, {class:'root_path'} %>
 <script type="text/javascript">
   $('td:contains("待ち")').css("color", "green");
   $('td:contains("診察")').css("color", "red");
