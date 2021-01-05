@@ -16,10 +16,10 @@
       </td>
       <td>
         <div class="btn">
-          <%= button_to '待ち', turn_path(turn.id), method: :put, class: "button", params: {status: '待ち'}, remote: true %>
-          <%= button_to '診察', turn_path(turn.id), method: :put, class: "button", params: {status: '診察'}, remote: true %>
-          <%= button_to '不在', turn_path(turn.id), method: :put, class: "button", params: {status: '不在'}, remote: true %>
-          <%= button_to '終了', turn_path(turn.id), method: :put, class: "button", params: {status: '終了'}, remote: true %>
+          <%= button_to '待ち', turn_path(turn.id), method: :put, class: "wait-btn", params: {status: '待ち'}, remote: true %>
+          <%= button_to '診察', turn_path(turn.id), method: :put, class: "now-btn", params: {status: '診察'}, remote: true %>
+          <%= button_to '不在', turn_path(turn.id), method: :put, class: "absence-btn", params: {status: '不在'}, remote: true %>
+          <%= button_to '終了', turn_path(turn.id), method: :put, class: "end-btn", params: {status: '終了'}, remote: true %>
         </div>
       </td>
     </tr>
