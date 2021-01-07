@@ -48,4 +48,10 @@
       <p><%= link_to "トップページへ戻る", root_path, class: "toppage" %></p>
      </div>
    </div>
+<script>
+  const timer = 30000
+  window.addEventListener('load',function(){
+  setInterval('location.reload()',timer);
+  });
+</script>
   <%end%>
